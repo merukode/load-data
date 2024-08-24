@@ -75,8 +75,8 @@ const App: React.FC = () => {
   return (
     <main>
     <p>1000 Data Loaded</p>
-    <div className="table-container">
-      <Table className="table">
+    <div className="w-2/4 overflow-x-auto mx-auto">
+      <Table className="table w-[100%] border-collapse">
         <TableHeader>
           {tableInstance.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>

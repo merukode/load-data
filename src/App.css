@@ -3,22 +3,6 @@
   padding: 2rem;
   text-align: center;
 }
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination span {
-  margin: 0 10px;
-}
-
-.pagination button {
-  padding: 5px 10px;
-  margin: 0 5px;
-}
-
 .table-container {
   width: 50%; /* or a fixed width if you prefer */
   overflow-x: auto;
