@@ -1,5 +1,4 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -21,9 +20,9 @@
 }
 
 .table-container {
-  width: 100%; /* or a fixed width if you prefer */
-  max-width: 1000px; /* Adjust as needed */
+  width: 50%; /* or a fixed width if you prefer */
   overflow-x: auto;
+  margin: auto;
 }
 
 .table {
@@ -36,4 +35,37 @@
   border: 1px solid #ddd;
   text-align: left;
   white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* App.css */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  background-color: #d0d0d0;
+  cursor: not-allowed;
+}
+
+.pagination button:hover {
+  background-color: #e0e0e0;
 }

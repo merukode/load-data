@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { generateData, UserData } from './components/dataGenerator'
 import { useReactTable, ColumnDef, getCoreRowModel, flexRender } from '@tanstack/react-table'
 import { useQuery } from '@tanstack/react-query'
-import { Table, TableHead, TableBody, TableRow, TableCell } from './components/ui/table'
+import { Table, TableHead, TableBody, TableRow, TableCell, TableHeader } from './components/ui/table'
 import './App.css'
 
 const PAGE_SIZE = 10;
-const TOTAL_PAGES = 100; // Total number of pages
+const TOTAL_PAGES = 100;
 
 const fetchData = async (page: number): Promise<UserData[]> => {
   return new Promise((resolve) => {
@@ -27,6 +27,8 @@ const App: React.FC = () => {
   const { data, isLoading, error } = useQuery<UserData[]>({
     queryKey: ['userData', page],
     queryFn: () => fetchData(page),
+    refetchOnWindowFocus: false, 
+    refetchInterval: false, 
   });
 
   const columns: ColumnDef<UserData>[] = [
@@ -69,22 +71,23 @@ const App: React.FC = () => {
   if (error) {
     return <div>Error loading data: {String(error)}</div>;
   }
+
   return (
     <main>
-    <p>Data Loaded</p> {/* Add this line */}
-    <div>
-      <Table>
-        <TableHead>
+    <p>1000 Data Loaded</p>
+    <div className="table-container">
+      <Table className="table">
+        <TableHeader>
           {tableInstance.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableCell key={header.id}>
+                <TableHead key={header.id}>
                   {flexRender(header.column.columnDef.header, header.getContext())}
-                </TableCell>
+                </TableHead>
               ))}
             </TableRow>
           ))}
-        </TableHead>
+        </TableHeader>
         <TableBody>
           {tableInstance.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
